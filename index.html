@@ -22,14 +22,22 @@
         html {
             scroll-behavior: smooth;
         }
+        .logo-container img {
+            height: 200px; /* Much larger fixed height */
+            width: auto;
+            max-width: 100%;
+        }
+        @media (max-width: 768px) {
+            .logo-container img {
+                height: 150px; /* Slightly smaller on mobile */
+            }
+        }
     </style>
     <script>
-        // Force scroll to top on page load
         window.onload = function() {
             window.scrollTo(0, 0);
         }
         
-        // Smooth scroll for navigation links
         document.addEventListener('DOMContentLoaded', function() {
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
@@ -49,19 +57,21 @@
     <!-- Navigation -->
     <nav class="bg-white shadow-lg">
         <div class="max-w-6xl mx-auto px-4">
-            <div class="flex justify-between items-center py-4">
-                <div class="flex items-center">
-                    <img src="assets/logo-color.png" alt="Olson Analytics LLC" class="h-32">
+            <div class="flex justify-between items-center py-6">
+                <div class="flex items-center logo-container">
+                    <!-- Much larger logo -->
+                    <img src="assets/logo-color.png" alt="Olson Analytics LLC">
                 </div>
                 <div class="hidden md:flex space-x-8">
-                    <a href="#services" class="text-gray-600 hover:text-[#4A3425]">Services</a>
-                    <a href="#expertise" class="text-gray-600 hover:text-[#4A3425]">Expertise</a>
-                    <a href="#process" class="text-gray-600 hover:text-[#4A3425]">Process</a>
-                    <a href="#contact" class="text-gray-600 hover:text-[#4A3425]">Contact</a>
+                    <a href="#services" class="text-gray-600 hover:text-[#4A3425] text-lg">Services</a>
+                    <a href="#expertise" class="text-gray-600 hover:text-[#4A3425] text-lg">Expertise</a>
+                    <a href="#process" class="text-gray-600 hover:text-[#4A3425] text-lg">Process</a>
+                    <a href="#contact" class="text-gray-600 hover:text-[#4A3425] text-lg">Contact</a>
                 </div>
             </div>
         </div>
     </nav>
+
 
     <!-- Hero Section -->
     <div class="bg-white py-20">
