@@ -1,0 +1,160 @@
+/* Olson Analytics site
+ * Layout: one reading column on paper, sections divided by the heavy bark rule,
+ * work examples as flat paper-on-paper blocks. Tokens from the Olson Analytics design system.
+ * Deliberately single-theme (paper), per the brand: cream surface, bark text, moss action.
+ */
+:root {
+  --cream-50: #FBF6F1;
+  --cream-100: #F5EBE6;
+  --cream-200: #ECE0D6;
+  --cream-300: #D9C9BB;
+  --clay-400: #D4BFB3;
+  --clay-600: #B89E8E;
+  --bark-300: #8C7460;
+  --bark-500: #6B4F3D;
+  --bark-700: #4A3425;
+  --bark-900: #2E1F14;
+  --moss-700: #36502F;
+  --moss-900: #21331B;
+  --rust-700: #8C4423;
+
+  --font-sans: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Source Serif 4', 'Iowan Old Style', Georgia, serif;
+  --font-mono: 'Source Code Pro', 'SF Mono', Menlo, Consolas, monospace;
+
+  --measure: 68ch;
+  --page: 760px;
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0;
+  background: var(--cream-100);
+  color: var(--bark-700);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+::selection { background: var(--clay-400); color: var(--bark-900); }
+
+.skip {
+  position: absolute; left: 16px; top: -48px;
+  background: var(--bark-900); color: var(--cream-100);
+  padding: 8px 12px; font-size: 14px; text-decoration: none;
+}
+.skip:focus { top: 12px; }
+
+.wrap {
+  max-width: var(--page);
+  margin: 0 auto;
+  padding-inline: clamp(16px, 5vw, 32px);
+}
+
+a { color: var(--moss-700); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.18em; transition: color 150ms var(--ease); }
+a:hover { color: var(--moss-900); text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--moss-700); outline-offset: 3px; }
+
+/* Header */
+.site-header {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 12px 32px;
+  padding-block: 20px;
+  border-bottom: 1px solid var(--bark-300);
+}
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--bark-900); }
+.brand:hover { color: var(--bark-900); }
+.brand svg { width: 36px; height: 36px; flex: none; }
+.brand span { font-weight: 600; font-size: 19px; letter-spacing: -0.005em; }
+.nav { display: flex; flex-wrap: wrap; gap: 8px 24px; }
+.nav a { color: var(--bark-500); text-decoration: none; font-size: 15px; }
+.nav a:hover { color: var(--moss-700); }
+
+/* Type */
+.eyebrow {
+  font-size: 12px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.14em; color: var(--bark-500); margin: 0 0 20px;
+}
+h1, h2, h3 { color: var(--bark-900); text-wrap: balance; margin: 0; }
+h1 {
+  font-family: var(--font-serif); font-weight: 500;
+  font-size: clamp(40px, 7.2vw, 64px); line-height: 1.06; letter-spacing: -0.01em;
+  font-variation-settings: 'opsz' 60;
+  max-width: 17ch;
+}
+h2 { font-size: 28px; font-weight: 600; line-height: 1.25; }
+h3 { font-size: 22px; font-weight: 600; line-height: 1.3; }
+p { margin: 0; max-width: var(--measure); text-wrap: pretty; }
+.lead { font-size: 20px; line-height: 1.7; color: var(--bark-700); max-width: 56ch; }
+
+/* Sections */
+main > section { padding-block: 56px; border-top: 2px solid var(--bark-900); }
+main > section.hero { border-top: 0; padding-block: clamp(56px, 10vw, 96px) 72px; }
+.stack { display: flex; flex-direction: column; gap: 18px; }
+.section-head { display: flex; flex-direction: column; gap: 0; margin-bottom: 28px; }
+.section-head .eyebrow { margin-bottom: 12px; }
+
+.hero .stack { gap: 28px; }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+.button {
+  display: inline-block; background: var(--moss-700); color: var(--cream-100);
+  padding: 12px 22px; border-radius: 2px; text-decoration: none;
+  font-size: 15px; font-weight: 500; transition: background 150ms var(--ease);
+}
+.button:hover { background: var(--moss-900); color: var(--cream-100); }
+.button:active { transform: translateY(1px); }
+.address { font-family: var(--font-mono); font-size: 14px; color: var(--bark-500); user-select: all; }
+
+/* How I work: the three questions get set apart from the prose */
+.questions {
+  list-style: none; margin: 4px 0 0; padding: 0 0 0 20px;
+  border-left: 3px solid var(--bark-900);
+  display: flex; flex-direction: column; gap: 10px;
+  max-width: var(--measure);
+}
+.questions li { font-family: var(--font-serif); font-size: 19px; line-height: 1.45; color: var(--bark-900); }
+
+/* Work */
+.work { display: flex; flex-direction: column; gap: 24px; }
+.case {
+  background: var(--cream-200);
+  padding: clamp(24px, 4vw, 36px);
+  display: flex; flex-direction: column; gap: 16px;
+}
+.case-meta {
+  display: flex; flex-wrap: wrap; gap: 4px 20px;
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.04em;
+  color: var(--bark-500);
+  padding-bottom: 12px; border-bottom: 1px solid var(--bark-300);
+}
+.case-meta .org { color: var(--rust-700); }
+.case p { font-size: 16.5px; }
+.case .pull { font-weight: 600; color: var(--bark-900); }
+.figures {
+  display: flex; flex-wrap: wrap; gap: 16px 40px;
+  padding-top: 14px; border-top: 1px solid var(--bark-300);
+}
+.figure .label { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--bark-500); }
+.figure .value { font-size: 26px; font-weight: 600; color: var(--bark-900); font-variant-numeric: tabular-nums; line-height: 1.3; }
+
+/* Footer */
+.site-footer {
+  border-top: 2px solid var(--bark-900);
+  padding-block: 36px 56px;
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px;
+}
+.site-footer .meta { font-family: var(--font-mono); font-size: 12px; line-height: 1.7; color: var(--bark-500); letter-spacing: 0.03em; margin-top: 10px; }
+.signoff { font-weight: 500; color: var(--bark-900); text-align: right; line-height: 1.4; }
+
+@media (max-width: 520px) {
+  body { font-size: 16.5px; }
+  .lead { font-size: 18px; }
+  h2 { font-size: 24px; }
+  main > section { padding-block: 44px; }
+  .signoff { text-align: left; }
+}

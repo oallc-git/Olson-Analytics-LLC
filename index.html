@@ -1,389 +1,126 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Olson Analytics</title>
-  <meta name="description" content="An embedded operations practice for nonprofits and public agencies. I join your team, take ownership of real operations, and stay as long as I'm useful.">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/colors_and_type.css">
-  <style>
-    html { scroll-behavior: smooth; }
-
-    .container {
-      width: min(1040px, 100%);
-      margin: 0 auto;
-      padding: 0 clamp(24px, 6vw, 64px);
-    }
-
-    /* ============ Header ============ */
-    .site-header {
-      border-bottom: 1px solid var(--bark-300);
-      padding: 20px 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px 24px;
-    }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-    }
-    .brand span {
-      font-weight: var(--weight-semibold);
-      font-size: 19px;
-      color: var(--bark-900);
-      letter-spacing: -0.005em;
-    }
-    .site-nav {
-      display: flex;
-      gap: clamp(20px, 3vw, 32px);
-      flex-wrap: wrap;
-    }
-    .site-nav a {
-      font-size: 15px;
-      color: var(--bark-500);
-      text-decoration: none;
-      transition: color var(--motion-fast);
-    }
-    .site-nav a:hover { color: var(--moss-700); }
-
-    /* ============ Shared section furniture ============ */
-    .eyebrow-label {
-      font-size: var(--text-xs);
-      font-weight: var(--weight-semibold);
-      text-transform: uppercase;
-      letter-spacing: var(--tracking-eyebrow);
-      color: var(--bark-500);
-      margin: 0 0 28px 0;
-    }
-
-    .numbered-list {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      counter-reset: item;
-      display: flex;
-      flex-direction: column;
-    }
-    .numbered-list li {
-      counter-increment: item;
-      display: grid;
-      grid-template-columns: 48px 1fr;
-      gap: 16px;
-      align-items: baseline;
-      border-bottom: 1px solid var(--bark-300);
-    }
-    .numbered-list li:last-child { border-bottom: none; }
-    .numbered-list li::before {
-      content: counter(item, decimal-leading-zero);
-      font-family: var(--font-mono);
-      font-size: 13px;
-      color: var(--rust-700);
-      letter-spacing: 0.04em;
-    }
-
-    /* ============ Hero ============ */
-    .hero { padding: clamp(64px, 10vw, 104px) 0 clamp(56px, 8vw, 88px) 0; }
-    .hero .kicker {
-      font-size: var(--text-xs);
-      font-weight: var(--weight-semibold);
-      text-transform: uppercase;
-      letter-spacing: var(--tracking-eyebrow);
-      color: var(--rust-700);
-      margin: 0 0 28px 0;
-    }
-    .hero h1 {
-      font-family: var(--font-serif);
-      font-size: clamp(34px, 5.6vw, 60px);
-      font-weight: var(--weight-medium);
-      line-height: 1.08;
-      letter-spacing: var(--tracking-tight);
-      margin: 0 0 24px 0;
-      color: var(--bark-900);
-      max-width: 20ch;
-      font-variation-settings: 'opsz' 60;
-      text-wrap: balance;
-    }
-    .hero .lede {
-      font-size: clamp(18px, 2.4vw, 21px);
-      line-height: 1.6;
-      color: var(--bark-700);
-      max-width: 50ch;
-      margin: 0 0 20px 0;
-      text-wrap: pretty;
-    }
-    .hero .ground {
-      font-size: var(--text-body);
-      line-height: var(--lh-body);
-      color: var(--bark-500);
-      max-width: 52ch;
-      margin: 0;
-      text-wrap: pretty;
-    }
-    .hero-link { margin-top: 40px; }
-    .hero-link a {
-      font-size: var(--text-base);
-      color: var(--moss-700);
-      text-decoration: underline;
-      text-decoration-thickness: 1px;
-      text-underline-offset: 0.18em;
-      transition: color var(--motion-fast), text-decoration-thickness var(--motion-fast);
-    }
-    .hero-link a:hover {
-      color: var(--moss-900);
-      text-decoration-thickness: 2px;
-    }
-
-    /* ============ How I work ============ */
-    .how {
-      border-top: 2px solid var(--bark-900);
-      padding: clamp(48px, 7vw, 64px) 0;
-    }
-    .how .model {
-      font-size: clamp(18px, 2.3vw, 20px);
-      line-height: var(--lh-loose);
-      color: var(--bark-900);
-      max-width: 62ch;
-      margin: 0 0 clamp(36px, 5vw, 48px) 0;
-      text-wrap: pretty;
-    }
-    .how .sublabel {
-      font-size: var(--text-xs);
-      font-weight: var(--weight-semibold);
-      text-transform: uppercase;
-      letter-spacing: var(--tracking-eyebrow);
-      color: var(--bark-300);
-      margin: 0 0 20px 0;
-    }
-    .how .numbered-list li { padding: 14px 0; }
-    .how .numbered-list li span {
-      font-size: var(--text-body);
-      font-weight: var(--weight-medium);
-      line-height: 1.5;
-      color: var(--bark-900);
-      max-width: 60ch;
-    }
-
-    /* ============ The work ============ */
-    .work {
-      border-top: 1px solid var(--bark-300);
-      padding: clamp(48px, 7vw, 64px) 0;
-    }
-    .work .eyebrow-label { margin-bottom: 32px; }
-    .work article { padding: clamp(24px, 4.5vw, 44px); }
-    .work article.primary { background: var(--cream-200); }
-    .work article.secondary {
-      border: 1px solid var(--bark-300);
-      margin-top: 24px;
-    }
-    .work .meta {
-      display: flex;
-      gap: 12px 24px;
-      flex-wrap: wrap;
-      font-family: var(--font-mono);
-      font-size: var(--text-xs);
-      color: var(--bark-700);
-      margin-bottom: 20px;
-      padding-bottom: 14px;
-      border-bottom: 1px solid var(--bark-300);
-      letter-spacing: 0.04em;
-    }
-    .work .meta .stamp { color: var(--rust-700); }
-    .work .narrative {
-      font-size: var(--text-body);
-      line-height: var(--lh-body);
-      color: var(--bark-700);
-      margin: 0;
-      max-width: 62ch;
-      text-wrap: pretty;
-    }
-    .work article.primary .narrative { margin-bottom: 28px; }
-    .work .numbered-list { border-top: 1px solid var(--bark-300); }
-    .work .numbered-list li { padding: 12px 0; }
-    .work .numbered-list li span {
-      font-size: var(--text-base);
-      line-height: 1.55;
-      color: var(--bark-900);
-      max-width: 62ch;
-    }
-
-    /* ============ About ============ */
-    .about {
-      border-top: 1px solid var(--bark-300);
-      padding: clamp(48px, 7vw, 64px) 0 clamp(56px, 8vw, 80px) 0;
-    }
-    .about p {
-      font-size: clamp(18px, 2.3vw, 20px);
-      line-height: var(--lh-loose);
-      color: var(--bark-900);
-      max-width: 60ch;
-      margin: 0;
-      text-wrap: pretty;
-    }
-
-    /* ============ Contact & footer (inverse band) ============ */
-    .contact-band { background: var(--bark-900); }
-    .contact { padding: clamp(56px, 8vw, 88px) 0 clamp(40px, 6vw, 56px) 0; }
-    .contact .eyebrow-label { color: var(--clay-400); }
-    .contact .invitation {
-      font-size: clamp(19px, 2.6vw, 24px);
-      line-height: 1.55;
-      color: var(--cream-100);
-      max-width: 44ch;
-      margin: 0 0 32px 0;
-      text-wrap: pretty;
-    }
-    .contact .email {
-      font-family: var(--font-serif);
-      font-size: clamp(20px, 3.6vw, 32px);
-      font-weight: var(--weight-medium);
-      color: var(--cream-50);
-      text-decoration: underline;
-      text-decoration-color: var(--clay-600);
-      text-decoration-thickness: 1px;
-      text-underline-offset: 0.22em;
-      overflow-wrap: anywhere;
-      transition: text-decoration-thickness var(--motion-fast), text-decoration-color var(--motion-fast);
-    }
-    .contact .email:hover {
-      text-decoration-thickness: 2px;
-      text-decoration-color: var(--clay-400);
-    }
-    .site-footer {
-      border-top: 1px solid var(--bark-700);
-      padding: 28px 0 48px 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      flex-wrap: wrap;
-      gap: 24px;
-    }
-    .site-footer .id {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .site-footer .id div {
-      font-family: var(--font-mono);
-      font-size: var(--text-xs);
-      color: var(--bark-100);
-      line-height: var(--lh-loose);
-      letter-spacing: 0.03em;
-    }
-    .site-footer .id a {
-      color: var(--bark-100);
-      text-decoration: underline;
-      text-underline-offset: 0.18em;
-    }
-    .site-footer .id a:hover { color: var(--cream-100); }
-    .site-footer .signoff {
-      font-size: var(--text-base);
-      font-weight: var(--weight-medium);
-      color: var(--cream-100);
-      text-align: right;
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Olson Analytics</title>
+<meta name="description" content="Nate Olson helps nonprofits and public agencies find where their systems are working against them and fix it, usually with the tools they already have.">
+<meta property="og:title" content="Olson Analytics">
+<meta property="og:description" content="Nate Olson helps nonprofits and public agencies find where their systems are working against them and fix it, usually with the tools they already have.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://olsonanalyticsllc.com/">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&family=Source+Code+Pro:wght@400;500&display=swap">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body id="top">
+<a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Olson Analytics, home">
+      <svg viewBox="0 0 200 200" aria-hidden="true" focusable="false"><rect x="10" y="10" width="180" height="180" fill="none" stroke="#2E1F14" stroke-width="18"/><path d="M 38 84 L 38 38 L 84 38" fill="none" stroke="#B89E8E" stroke-width="18" stroke-linecap="square"/><path d="M 162 116 L 162 162 L 116 162" fill="none" stroke="#B89E8E" stroke-width="18" stroke-linecap="square"/></svg>
+      <span>Olson Analytics</span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#how-i-work">How I work</a>
+      <a href="#work">Recent work</a>
+      <a href="#about">How I got here</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-  <div class="container">
-    <header class="site-header">
-      <a href="#top" class="brand">
-        <img src="assets/logo-icon.svg" width="36" height="36" alt="Olson Analytics">
+  <main id="main">
+    <section class="hero">
+      <div class="stack">
+        <p class="eyebrow">Olson Analytics · Bedford, NH</p>
+        <h1>Your staff didn't take the job to fight with a spreadsheet.</h1>
+        <p class="lead">A report that takes a week eats time someone meant to spend with the people they serve. A grant application that's hard to fill out favors the organizations with the most capacity. I'm Nate Olson. I help nonprofits and public agencies find where their systems are working against them and fix it, usually with the tools they already have.</p>
+        <div class="actions">
+          <a class="button" href="mailto:nate@olsonanalyticsllc.com">Email me</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="how-i-work">
+      <div class="section-head">
+        <h2>How I work</h2>
+      </div>
+      <div class="stack">
+        <p>Most people bring me a problem that isn't quite the real problem yet. Why can't anyone find the current version of this document? Why don't these numbers match? My first job is to scope it down until we arrive at something that can actually be fixed.</p>
+        <p>I ask a lot of questions, I craft a lot of examples, and I love a template. In most systems, early decisions are hard to undo. When I set up a grant program, for example, I walk through the whole life of a grant with the people who'll run it:</p>
+        <ul class="questions">
+          <li>What does an applicant see, and in what order?</li>
+          <li>What does a reviewer need in front of them?</li>
+          <li>What will staff need to learn from grantee reports two years from now?</li>
+        </ul>
+        <p>I'm most useful when you've tried to fix something a few times and new heads keep appearing on the hydra. If you already know exactly what needs doing, I'm probably not your best bet.</p>
+        <p>At CDFA, updating the application and program guides every year created a lot of friction. Once we pulled it apart, the real issue was ownership. Different people wrote different sections, and who owned what was understood informally but never written down or enforced. So we're starting with one or two sections, writing down who owns each piece, and rolling it out further if it helps.</p>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="section-head">
+        <h2>Recent work</h2>
+      </div>
+      <div class="work">
+        <article class="case">
+          <div class="case-meta"><span class="org">NH Community Development Finance Authority</span><span>with GO-NORTH</span></div>
+          <h3>A rural health grant program</h3>
+          <p>New Hampshire is putting capital money into rural health infrastructure through a program CDFA runs under GO-NORTH. It's the first CDFA program with a pre-application and the first where an outside organization is involved in a review stage. So instead of one application there were two, each with its own review. The GO-NORTH team was also new to the grants system, so they needed training, plus review forms that let CDFA see where things stood and keep the program on schedule.</p>
+          <p class="pull">Most of my work happened before the program opened.</p>
+          <p>Every confusing question on an application costs a rural provider time they'd otherwise spend on patients. It also shapes who applies at all, and this program is meant to reach small organizations as well as the ones with a grants team.</p>
+        </article>
+
+        <article class="case">
+          <div class="case-meta"><span class="org">A New Hampshire nonprofit</span></div>
+          <h3>Donation records in three places</h3>
+          <p>Their donations had three sources of truth: the bookkeeping software, the donor database and a spreadsheet. When those disagree, nobody can say with confidence where fundraising stands. I built a way to reconcile the three, and along the way discovered it might be possible to connect the bookkeeping and donor systems directly. If that works, the spreadsheet goes away, along with the need for most of the reconciling I built.</p>
+        </article>
+
+        <article class="case">
+          <div class="case-meta"><span class="org">NH Community Development Finance Authority</span></div>
+          <h3>The thank-you letters</h3>
+          <p>CDFA sends a thank-you letter for every tax credit donation, about 320 last year. They came out of the grants system with broken formatting, so staff fixed each one by hand, 76 of them in December alone. I worked with the team to fix the report, and now the letters only need a review before they go out.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="section-head">
+        <h2>How I got here</h2>
+      </div>
+      <div class="stack">
+        <p>I studied engineering and management at Clarkson. The fall of my senior year I did Semester at Sea, 12 countries in about four months. Seeing that many places back to back, I kept noticing how much the choices a society makes shape people's standard of living, and I wanted to work closer to those choices. When I got home, the entry-level engineering jobs I was reading about didn't feel like they'd change anything for anyone, so I joined City Year.</p>
+        <p>City Year corps members aren't credentialed teachers. We showed up every day for students who needed someone in their corner, and those students made real academic gains. The organizations I work with are full of people like that. I want the systems around them to give them more time with the people they serve.</p>
+        <p>I came to CDFA to build training materials for one program. Now I support their grants management system across every program.</p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-head">
+        <h2>Working together</h2>
+      </div>
+      <div class="stack">
+        <p>Olson Analytics is just me, and I keep a small client list, so the person you talk to is the person doing the work. I work with nonprofits and public agencies, especially ones serving people that current systems leave behind.</p>
+        <p>Before I change anything, I spend time learning how the work actually runs, so I do my best work on projects with some room in the schedule.</p>
+        <p>If this sounds like your organization, email me at <a href="mailto:nate@olsonanalyticsllc.com">nate@olsonanalyticsllc.com</a>. Tell me what's bugging you, even if you're not sure it's the real problem yet.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>
+      <a class="brand" href="#top" aria-label="Olson Analytics, back to top">
+        <svg viewBox="0 0 200 200" aria-hidden="true" focusable="false"><rect x="10" y="10" width="180" height="180" fill="none" stroke="#2E1F14" stroke-width="18"/><path d="M 38 84 L 38 38 L 84 38" fill="none" stroke="#B89E8E" stroke-width="18" stroke-linecap="square"/><path d="M 162 116 L 162 162 L 116 162" fill="none" stroke="#B89E8E" stroke-width="18" stroke-linecap="square"/></svg>
         <span>Olson Analytics</span>
       </a>
-      <nav class="site-nav">
-        <a href="#work">Work</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
-  </div>
-
-  <main>
-    <div class="container">
-      <section class="hero">
-        <p class="kicker">Olson Analytics&ensp;&middot;&ensp;New Hampshire</p>
-        <h1>An embedded operations practice for nonprofits and public agencies.</h1>
-        <p class="lede">I join your team, take ownership of real operations, and stay as long as I'm useful.</p>
-        <p class="ground">Engagements start small: one program, one system, one problem that needs an owner.</p>
-        <div class="hero-link">
-          <a href="#contact">Get in touch</a>
-        </div>
-      </section>
+      <div class="meta">Bedford, NH<br><span class="address">nate@olsonanalyticsllc.com</span></div>
     </div>
-
-    <div class="container">
-      <section id="how-i-work" class="how">
-        <h2 class="eyebrow-label">How I work</h2>
-        <p class="model">I embed: I join your team, learn your systems and your people, and take ownership of work with a deadline attached. Some organizations keep me around for years. Others have me build a system, run it until it's smooth, and hand it off. Both work, and you don't have to choose up front.</p>
-        <h3 class="sublabel">What that looks like</h3>
-        <ol class="numbered-list">
-          <li><span>Run the systems your programs depend on: grant management, data, reporting</span></li>
-          <li><span>Own recurring operations: reporting cycles, compliance deadlines, data requests</span></li>
-          <li><span>Facilitate working groups and committees, from formation to real decisions</span></li>
-          <li><span>Build automations that turn day-long tasks into minutes</span></li>
-          <li><span>Fix the processes that keep getting pushed to next quarter</span></li>
-          <li><span>Write the documentation so the knowledge stays when people move on</span></li>
-        </ol>
-      </section>
-    </div>
-
-    <div class="container">
-      <section id="work" class="work">
-        <h2 class="eyebrow-label">The work</h2>
-
-        <article class="primary">
-          <div class="meta">
-            <span class="stamp">2022 &rarr; present</span>
-            <span>New Hampshire Community Development Finance Authority</span>
-          </div>
-          <p class="narrative">In late 2022, the New Hampshire Community Development Finance Authority hired me to support one program, the Community Navigators Pilot Program. Being inside the work surfaced the next opportunity, and the next: today the work spans their grant management system, program reporting, process improvement, facilitation, and documentation. That's the usual arc. I join to take one specific problem off a team's plate, and being embedded shows us both where else I can help.</p>
-          <ol class="numbered-list">
-            <li><span>Built automations inside the grant management system that turned recurring reporting setup from hours into minutes</span></li>
-            <li><span>Facilitated the ReGen Valley Data Advisory Committee from formation through its first working decisions</span></li>
-            <li><span>Mapped and analyzed the grant application process end to end with the staff who run it</span></li>
-          </ol>
-        </article>
-
-        <article class="secondary">
-          <div class="meta">
-            <span class="stamp">Where it started</span>
-            <span>City Year&ensp;&middot;&ensp;NH, Providence, Boston, Tulsa, Seattle</span>
-          </div>
-          <p class="narrative">City Year is where I started, three years in New Hampshire as a corps member, senior corps member, and VISTA. Years later, sites in Providence, Boston, Tulsa, and Seattle brought me in to carry their analytics when they needed that capacity. Different systems, different cities, same job: join the team, own the operation, keep the programs running.</p>
-        </article>
-      </section>
-    </div>
-
-    <div class="container">
-      <section id="about" class="about">
-        <h2 class="eyebrow-label">About</h2>
-        <p>Olson Analytics is one person: me, Nate Olson. I came up through engineering and process improvement, and I do my best work inside organizations, next to the people who use the systems every day. I'm based in New Hampshire and the work is rooted here. If the practice sounds small, that's the design: you get the person you talked to.</p>
-      </section>
-    </div>
-
-    <div class="contact-band">
-      <div class="container">
-        <section id="contact" class="contact">
-          <h2 class="eyebrow-label">Contact</h2>
-          <p class="invitation">If this sounds like a fit, email me. A few lines about your organization and what you're carrying is plenty.</p>
-          <a class="email" href="mailto:nate@olsonanalyticsllc.com">nate@olsonanalyticsllc.com</a>
-        </section>
-        <footer class="site-footer">
-          <div class="id">
-            <img src="assets/logo-icon-reverse.svg" width="32" height="32" alt="Olson Analytics">
-            <div>Olson Analytics LLC&ensp;&middot;&ensp;New Hampshire<br><a href="https://www.linkedin.com/in/nate-olson-a58207102/">LinkedIn</a></div>
-          </div>
-          <div class="signoff">Thanks,<br>Nate</div>
-        </footer>
-      </div>
-    </div>
-  </main>
+    <div class="signoff">Thanks,<br>Nate</div>
+  </footer>
+</div>
 
 </body>
 </html>
