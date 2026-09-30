@@ -13,11 +13,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&family=Source+Code+Pro:wght@400;500&display=swap">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=3">
 </head>
-<body id="top">
+<body>
+
 <a class="skip" href="#main">Skip to content</a>
-<div class="wrap">
+<div class="wrap" id="top">
   <header class="site-header">
     <a class="brand" href="#top" aria-label="Olson Analytics, home">
       <svg viewBox="0 0 200 200" aria-hidden="true" focusable="false"><rect x="10" y="10" width="180" height="180" fill="none" stroke="#2E1F14" stroke-width="18"/><path d="M 38 84 L 38 38 L 84 38" fill="none" stroke="#B89E8E" stroke-width="18" stroke-linecap="square"/><path d="M 162 116 L 162 162 L 116 162" fill="none" stroke="#B89E8E" stroke-width="18" stroke-linecap="square"/></svg>
@@ -32,22 +33,33 @@
   </header>
 
   <main id="main">
-    <section class="hero">
-      <div class="stack">
-        <p class="eyebrow">Olson Analytics · Bedford, NH</p>
-        <h1>Your staff didn't take the job to fight with a spreadsheet.</h1>
-        <p class="lead">A report that takes a week eats time someone meant to spend with the people they serve. A grant application that's hard to fill out favors the organizations with the most capacity. I'm Nate Olson. I help nonprofits and public agencies find where their systems are working against them and fix it, usually with the tools they already have.</p>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-main">
+        <p class="eyebrow">Nonprofits and public agencies · Bedford, NH</p>
+        <h1 id="hero-title">Your staff didn't take the job to fight with a spreadsheet.</h1>
+        <p class="lead">A grant application that's hard to fill out favors the organizations with the most capacity. I'm Nate Olson. I help nonprofits and public agencies find where their systems are working against them and fix it, usually with the tools they already have.</p>
         <div class="actions">
-          <a class="button" href="mailto:nate@olsonanalyticsllc.com">Email me</a>
+          <a class="button" href="mailto:nate@olsonanalyticsllc.com">Email me
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+          <span class="address">nate@olsonanalyticsllc.com</span>
         </div>
       </div>
+      <aside class="bracket" aria-label="At a glance">
+        <ul class="facts">
+          <li><span class="k">Who</span><span class="v">Just me. The person you talk to is the person doing the work.</span></li>
+          <li><span class="k">For</span><span class="v">Nonprofits and public agencies, especially ones serving people current systems leave behind.</span></li>
+          <li><span class="k">Usually</span><span class="v">With the tools you already have.</span></li>
+        </ul>
+      </aside>
     </section>
 
-    <section id="how-i-work">
-      <div class="section-head">
-        <h2>How I work</h2>
+    <section class="section" id="how-i-work" aria-labelledby="h-how">
+      <div class="rail">
+        <h2 id="h-how">How I work</h2>
+        <p class="mono">Scope first. Most problems arrive as a symptom.</p>
       </div>
-      <div class="stack">
+      <div class="body">
         <p>Most people bring me a problem that isn't quite the real problem yet. Why can't anyone find the current version of this document? Why don't these numbers match? My first job is to scope it down until we arrive at something that can actually be fixed.</p>
         <p>I ask a lot of questions, I craft a lot of examples, and I love a template. In most systems, early decisions are hard to undo. When I set up a grant program, for example, I walk through the whole life of a grant with the people who'll run it:</p>
         <ul class="questions">
@@ -55,72 +67,131 @@
           <li>What does a reviewer need in front of them?</li>
           <li>What will staff need to learn from grantee reports two years from now?</li>
         </ul>
-        <p>I'm most useful when you've tried to fix something a few times and new heads keep appearing on the hydra. If you already know exactly what needs doing, I'm probably not your best bet.</p>
-        <p>At CDFA, updating the application and program guides every year created a lot of friction. Once we pulled it apart, the real issue was ownership. Different people wrote different sections, and who owned what was understood informally but never written down or enforced. So we're starting with one or two sections, writing down who owns each piece, and rolling it out further if it helps.</p>
+        <p class="pullquote">I'm most useful when you've tried to fix something a few times and new heads keep appearing on the hydra.</p>
+        <p>If you already know exactly what needs doing, I'm probably not your best bet.</p>
       </div>
     </section>
 
-    <section id="work">
-      <div class="section-head">
-        <h2>Recent work</h2>
+    <section class="section" id="work" aria-labelledby="h-work">
+      <div class="rail">
+        <h2 id="h-work">Recent work</h2>
+        <p class="mono">Three projects, big and small.</p>
       </div>
       <div class="work">
         <article class="case">
           <div class="case-meta"><span class="org">NH Community Development Finance Authority</span><span>with GO-NORTH</span></div>
           <h3>A rural health grant program</h3>
-          <p>New Hampshire is putting capital money into rural health infrastructure through a program CDFA runs under GO-NORTH. It's the first CDFA program with a pre-application and the first where an outside organization is involved in a review stage. So instead of one application there were two, each with its own review. The GO-NORTH team was also new to the grants system, so they needed training, plus review forms that let CDFA see where things stood and keep the program on schedule.</p>
+          <p>New Hampshire is putting capital money into rural health infrastructure through a program CDFA runs under GO-NORTH. It's CDFA's first program with a pre-application and the first with an outside organization involved in a review stage, and the GO-NORTH team was new to the grants system.</p>
+          <figure class="flow" aria-label="How the program runs, from pre-application to award">
+            <figcaption class="flow-cap">How the program runs</figcaption>
+            <ol class="steps">
+              <li class="step new"><span class="n">01</span><span class="t">Pre-application</span><span class="s">New for CDFA</span></li>
+              <li class="step new"><span class="n">02</span><span class="t">First review</span><span class="s">CDFA and <span class="nw">GO-NORTH</span></span></li>
+              <li class="step"><span class="n">03</span><span class="t">Full application</span><span class="s">Second stage</span></li>
+              <li class="step new"><span class="n">04</span><span class="t">Second review</span><span class="s">CDFA and <span class="nw">GO-NORTH</span></span></li>
+              <li class="step end"><span class="n">05</span><span class="t">Award</span><span class="s">Capital money</span></li>
+            </ol>
+            <div class="built" aria-hidden="true"><span>Forms, review setup and training, built before opening</span></div>
+          </figure>
           <p class="pull">Most of my work happened before the program opened.</p>
           <p>Every confusing question on an application costs a rural provider time they'd otherwise spend on patients. It also shapes who applies at all, and this program is meant to reach small organizations as well as the ones with a grants team.</p>
         </article>
 
         <article class="case">
-          <div class="case-meta"><span class="org">A New Hampshire nonprofit</span></div>
-          <h3>Donation records in three places</h3>
-          <p>Their donations had three sources of truth: the bookkeeping software, the donor database and a spreadsheet. When those disagree, nobody can say with confidence where fundraising stands. I built a way to reconcile the three, and along the way discovered it might be possible to connect the bookkeeping and donor systems directly. If that works, the spreadsheet goes away, along with the need for most of the reconciling I built.</p>
+          <div class="case-meta"><span class="org">NH Community Development Finance Authority</span></div>
+          <h3>The thank-you letters</h3>
+          <p>CDFA sends a thank-you letter for every tax credit donation. They came out of the grants system with broken formatting, so staff fixed each one by hand. I worked with the team to fix the report, and now the letters only need a review before they go out.</p>
+          <div class="figures">
+            <div class="figure"><span class="value">~320</span><span class="label">Letters last year</span></div>
+            <div class="figure"><span class="value">76</span><span class="label">Fixed by hand last December</span></div>
+            <div class="figure after"><span class="value">0</span><span class="label">Need fixing now</span></div>
+          </div>
         </article>
 
         <article class="case">
-          <div class="case-meta"><span class="org">NH Community Development Finance Authority</span></div>
-          <h3>The thank-you letters</h3>
-          <p>CDFA sends a thank-you letter for every tax credit donation, about 320 last year. They came out of the grants system with broken formatting, so staff fixed each one by hand, 76 of them in December alone. I worked with the team to fix the report, and now the letters only need a review before they go out.</p>
+          <div class="case-meta"><span class="org">A New Hampshire nonprofit</span></div>
+          <h3>Donation records in three places</h3>
+          <p>Their donation records lived in three places that didn't agree, so nobody could say with confidence where fundraising stood. I built a way to reconcile them, and along the way found the bookkeeping and donor systems might connect directly. If that works, the spreadsheet goes away, along with most of the reconciling I built.</p>
+          <figure class="recon" aria-label="Three donation records reconciled into one; the spreadsheet may go away">
+            <div class="sources">
+              <div class="src"><span class="t">Bookkeeping software</span><span class="s">source 1</span></div>
+              <div class="src"><span class="t">Donor database</span><span class="s">source 2</span></div>
+              <div class="src gone"><span class="t">Spreadsheet</span><span class="s">may go away</span></div>
+            </div>
+            <div class="join" aria-hidden="true"></div>
+            <div class="result"><span class="t">One number for where fundraising stands</span><span class="s">Reconciled today. Next, connect bookkeeping and donor systems directly.</span></div>
+          </figure>
         </article>
       </div>
     </section>
 
-    <section id="about">
-      <div class="section-head">
-        <h2>How I got here</h2>
+    <section class="section" id="about" aria-labelledby="h-about">
+      <div class="rail">
+        <h2 id="h-about">How I got here</h2>
+        <p class="mono">Clarkson · Semester at Sea · City Year · Olson Analytics</p>
       </div>
-      <div class="stack">
-        <p>I studied engineering and management at Clarkson. The fall of my senior year I did Semester at Sea, 12 countries in about four months. Seeing that many places back to back, I kept noticing how much the choices a society makes shape people's standard of living, and I wanted to work closer to those choices. When I got home, the entry-level engineering jobs I was reading about didn't feel like they'd change anything for anyone, so I joined City Year.</p>
-        <p>City Year corps members aren't credentialed teachers. We showed up every day for students who needed someone in their corner, and those students made real academic gains. The organizations I work with are full of people like that. I want the systems around them to give them more time with the people they serve.</p>
-        <p>I came to CDFA to build training materials for one program. Now I support their grants management system across every program.</p>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="section-head">
-        <h2>Working together</h2>
-      </div>
-      <div class="stack">
-        <p>Olson Analytics is just me, and I keep a small client list, so the person you talk to is the person doing the work. I work with nonprofits and public agencies, especially ones serving people that current systems leave behind.</p>
-        <p>Before I change anything, I spend time learning how the work actually runs, so I do my best work on projects with some room in the schedule.</p>
-        <p>If this sounds like your organization, email me at <a href="mailto:nate@olsonanalyticsllc.com">nate@olsonanalyticsllc.com</a>. Tell me what's bugging you, even if you're not sure it's the real problem yet.</p>
+      <div class="body">
+        <p>I studied engineering and management at Clarkson. Semester at Sea, 12 countries in about four months, left me wanting to work closer to the choices that shape people's standard of living. The entry-level engineering jobs I was reading about didn't feel like they'd change anything for anyone, so I joined City Year.</p>
+        <p>I spent three years as a corps member with City Year New Hampshire. City Year corps members aren't credentialed teachers. We showed up every day for students who needed someone in their corner, and those students made real academic gains. The organizations I work with are full of people like that. I want the systems around them to give them more time with the people they serve.</p>
+        <p>After my third year, I started working part time as a data analyst for City Year Providence. Other sites asked for help too, so I set up Olson Analytics and went on to work with City Year's headquarters and its sites in Boston, Tulsa and Seattle.</p>
+        <p>CDFA hired Olson Analytics to build training materials for one program. Now I support their grants management system across every program.</p>
       </div>
     </section>
   </main>
-
-  <footer class="site-footer">
-    <div>
-      <a class="brand" href="#top" aria-label="Olson Analytics, back to top">
-        <svg viewBox="0 0 200 200" aria-hidden="true" focusable="false"><rect x="10" y="10" width="180" height="180" fill="none" stroke="#2E1F14" stroke-width="18"/><path d="M 38 84 L 38 38 L 84 38" fill="none" stroke="#B89E8E" stroke-width="18" stroke-linecap="square"/><path d="M 162 116 L 162 162 L 116 162" fill="none" stroke="#B89E8E" stroke-width="18" stroke-linecap="square"/></svg>
-        <span>Olson Analytics</span>
-      </a>
-      <div class="meta">Bedford, NH<br><span class="address">nate@olsonanalyticsllc.com</span></div>
-    </div>
-    <div class="signoff">Thanks,<br>Nate</div>
-  </footer>
 </div>
 
+<div class="closing" id="contact">
+  <div class="wrap">
+    <section class="section" aria-labelledby="h-contact">
+      <div class="rail">
+        <h2 id="h-contact">Working together</h2>
+        <p class="mono">Small client list. Some room in the schedule helps.</p>
+      </div>
+      <div class="body">
+        <p>Before I change anything, I spend time learning how the work actually runs, so I do my best work on projects with some room in the schedule.</p>
+        <p>If this sounds like your organization, email me. Tell me what's bugging you, even if you're not sure it's the real problem yet.</p>
+        <div class="actions">
+          <a class="button" href="mailto:nate@olsonanalyticsllc.com">Email me</a>
+          <span class="address" id="addr">nate@olsonanalyticsllc.com</span>
+          <button class="copy" type="button" id="copy-btn">Copy address</button>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <a class="brand" href="#top" aria-label="Olson Analytics, back to top">
+        <svg viewBox="0 0 200 200" aria-hidden="true" focusable="false"><rect x="10" y="10" width="180" height="180" fill="none" stroke="#F5EBE6" stroke-width="18"/><path d="M 38 84 L 38 38 L 84 38" fill="none" stroke="#B89E8E" stroke-width="18" stroke-linecap="square"/><path d="M 162 116 L 162 162 L 116 162" fill="none" stroke="#B89E8E" stroke-width="18" stroke-linecap="square"/></svg>
+        <span>Olson Analytics</span>
+      </a>
+      <div class="meta">Olson Analytics LLC · Bedford, NH</div>
+    </div>
+    <div class="signoff">Thanks,<br>Nate</div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var btn = document.getElementById('copy-btn');
+  var addr = document.getElementById('addr');
+  if (!btn || !addr) return;
+  btn.addEventListener('click', function () {
+    var done = function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy address'; }, 1800); };
+    var fallback = function () {
+      var r = document.createRange(); r.selectNodeContents(addr);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      btn.textContent = 'Selected, press Ctrl+C';
+    };
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(addr.textContent.trim()).then(done, fallback);
+      } else { fallback(); }
+    } catch (e) { fallback(); }
+  });
+})();
+</script>
 </body>
 </html>
